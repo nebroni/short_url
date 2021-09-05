@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1><a href="{% url 'start' %}{{key}}">{{ key }}</a></h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+<div>
+    <p> For using short_url you must be sure that you <a href="{% url 'login' %}">login</a> </p>
+    <p> If you don't have profile don't be afraid to create one <a href="{% url 'registration' %}">here</a></p>
+</div>
+{% endblock %}

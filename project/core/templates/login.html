@@ -1,0 +1,10 @@
+{% block content %}
+<form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+</form>
+<div>
+    <p>If you don't have profile please create one <a href="{%url 'registration'%}">here</a></p>
+</div>
+{% endblock %}
