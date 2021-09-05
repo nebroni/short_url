@@ -22,6 +22,6 @@ urlpatterns = [
     path('', v.index, name='start'),
     path('registration', v.create_user, name='registration'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('<key>', v.redireсt_url, name='red_url'),
+    path('<key>', v.redirect_url, name='red_url'),
     path('admin/', admin.site.urls),
 ]

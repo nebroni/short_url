@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from core.models import UrlKey
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import F
 from django.contrib.auth.decorators import login_required
 
@@ -10,6 +11,7 @@ class UrlForm(forms.ModelForm):
 	class Meta:
 		model = UrlKey
 		fields = ('url',)
+
 
 @login_required
 def index(request):
@@ -23,10 +25,10 @@ def index(request):
 	return render(request, 'short_url.html', ctx)
 
 
-def redireсt_url(request, key):
+def redirect_url(request, key):
 	try:
 		model = UrlKey.objects.get(key=key)
-	except Model.DoesNotExists:
+	except ObjectDoesNotExist:
 		return redirect('start')
 	url = model.url
 	model.redirect_count = F('redirect_count') + 1
